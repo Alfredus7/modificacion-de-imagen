@@ -3,11 +3,11 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System;
 
-public class FiltroAplicador
+public class AplicadorFiltros
 {
     private readonly ProgressBar _progressBar;
 
-    public FiltroAplicador(ProgressBar progressBar)
+    public AplicadorFiltros(ProgressBar progressBar)
     {
         _progressBar = progressBar;
     }

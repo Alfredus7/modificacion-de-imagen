@@ -9,7 +9,7 @@ namespace modificacion_de_imagen
     public partial class MenuEditor : Form
     {
         private ImagenManager imagenManager;
-        private FiltroAplicador filtroAplicador;
+        private AplicadorFiltros filtroAplicador;
 
         private readonly AjustesImagen ajustesImagen = new AjustesImagen();
         private readonly FiltrosColor filtrosColor = new FiltrosColor();
@@ -26,7 +26,7 @@ namespace modificacion_de_imagen
             InitializeComponent();
             progressBar1.Visible = false;
             imagenManager = new ImagenManager();
-            filtroAplicador = new FiltroAplicador(progressBar1);
+            filtroAplicador = new AplicadorFiltros(progressBar1);
         }
 
         private async void AplicarFiltro(Func<Bitmap, Bitmap> filtro)

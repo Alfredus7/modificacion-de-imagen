@@ -80,7 +80,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="clases\FiltroAplicador.cs" />
+    <Compile Include="clases\AplicadorFiltros.cs" />
     <Compile Include="clases\filtros\AjustesImagen.cs" />
     <Compile Include="clases\filtros\filtrosArtisticos.cs" />
     <Compile Include="clases\filtros\FiltrosBordesSuavizado.cs" />
