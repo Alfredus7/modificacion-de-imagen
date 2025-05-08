@@ -377,7 +377,6 @@
             this.salYPimietaToolStripMenuItem.Name = "salYPimietaToolStripMenuItem";
             this.salYPimietaToolStripMenuItem.Size = new System.Drawing.Size(145, 22);
             this.salYPimietaToolStripMenuItem.Text = "sal y pimieta";
-            this.salYPimietaToolStripMenuItem.Click += new System.EventHandler(this.salYPimietaToolStripMenuItem_Click);
             // 
             // agregarRuidoToolStripMenuItem
             // 

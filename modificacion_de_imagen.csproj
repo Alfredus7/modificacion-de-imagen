@@ -80,15 +80,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="clases\AjustesImagen.cs" />
-    <Compile Include="clases\filtrosArtisticos.cs" />
-    <Compile Include="clases\FiltrosBordesSuavizado.cs" />
-    <Compile Include="clases\FiltrosColor.cs" />
-    <Compile Include="clases\filtrosDetecionBordes.cs" />
-    <Compile Include="clases\FiltrosGrisesYUmbral.cs" />
-    <Compile Include="clases\FiltrosPosterizadoSolarizado.cs" />
-    <Compile Include="clases\FiltrosPracticos2.cs" />
-    <Compile Include="clases\TransformadasFourier.cs" />
+    <Compile Include="clases\FiltroAplicador.cs" />
+    <Compile Include="clases\filtros\AjustesImagen.cs" />
+    <Compile Include="clases\filtros\filtrosArtisticos.cs" />
+    <Compile Include="clases\filtros\FiltrosBordesSuavizado.cs" />
+    <Compile Include="clases\filtros\FiltrosColor.cs" />
+    <Compile Include="clases\filtros\filtrosDetecionBordes.cs" />
+    <Compile Include="clases\filtros\FiltrosGrisesYUmbral.cs" />
+    <Compile Include="clases\filtros\FiltrosPosterizadoSolarizado.cs" />
+    <Compile Include="clases\filtros\FiltrosPracticos2.cs" />
+    <Compile Include="clases\filtros\FiltrodConFourier.cs" />
+    <Compile Include="clases\ImagenManager.cs" />
     <Compile Include="MenusFiltros\PasoBajoDialog.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -206,7 +208,7 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\1000_F_397645571_UaMOXS3wypnAHhJ3vBesqJmoeGSlmQ36.jpg" />
+    <None Include="Resources\pngBackground.jpg" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

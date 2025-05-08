@@ -2,11 +2,10 @@
 using Accord.Imaging.Filters;
 using System;
 using System.Drawing;
-using System.Numerics;
 
 namespace modificacion_de_imagen.clases
 {
-    public class TransformadasFourier
+    public class FiltrodConFourier
     {
         private ComplexImage imagenFourier;
 

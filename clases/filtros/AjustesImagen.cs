@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Drawing;
-using System.Drawing.Imaging;
 using Accord.Imaging.Filters;
 
 namespace modificacion_de_imagen.clases
@@ -46,19 +45,6 @@ namespace modificacion_de_imagen.clases
 
             var resizeFiltro = new ResizeBilinear(ancho, alto);
             return resizeFiltro.Apply(imagen);
-        }
-
-        /// <summary>
-        /// Convierte una imagen a un formato compatible de 24 bits RGB.
-        /// </summary>
-        public Bitmap ConvertirAFormatoCompatible(Bitmap original)
-        {
-            if (original == null) throw new ArgumentNullException(nameof(original));
-
-            return original.Clone(
-                new Rectangle(0, 0, original.Width, original.Height),
-                PixelFormat.Format24bppRgb
-            );
         }
     }
 }
