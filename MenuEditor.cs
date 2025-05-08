@@ -10,6 +10,7 @@ namespace modificacion_de_imagen
     {
         private ImagenManager imagenManager;
         private AplicadorFiltros filtroAplicador;
+        private MapeoEtiquetado mapeoEtiquetado = new MapeoEtiquetado();
 
         private readonly AjustesImagen ajustesImagen = new AjustesImagen();
         private readonly FiltrosColor filtrosColor = new FiltrosColor();
@@ -144,5 +145,18 @@ namespace modificacion_de_imagen
         private void laplacianoToolStripMenuItem_Click(object sender, EventArgs e) => AplicarFiltro(filtrosDetecionBordes.AplicarLaplaciano);
         private void laplacianoGaussToolStripMenuItem_Click(object sender, EventArgs e) => AplicarFiltro(filtrosDetecionBordes.AplicarLaplacianoGauss);
         private void cannyToolStripMenuItem_Click(object sender, EventArgs e) => AplicarFiltro(filtrosDetecionBordes.AplicarCanny);
+
+        private void toolStripMenuItem2_Click(object sender, EventArgs e)
+        {
+            pictureBox1.Image = mapeoEtiquetado.ColorearObjetosEncontrados(new Bitmap(pictureBox1.Image));
+            lbInformacion.Text = "contaron"+ mapeoEtiquetado.ContarObjetos(new Bitmap(pictureBox1.Image), 4);
+        }
+
+        private void toolStripMenuItem3_Click(object sender, EventArgs e)
+        {
+            lbInformacion.Text = "contaron" + mapeoEtiquetado.ContarObjetos(new Bitmap(pictureBox1.Image), 8);
+            pictureBox1.Image = mapeoEtiquetado.ColorearObjetosEncontrados(new Bitmap(pictureBox1.Image));
+            
+        }
     }
 }

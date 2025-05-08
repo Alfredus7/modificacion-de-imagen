@@ -82,6 +82,7 @@
   <ItemGroup>
     <Compile Include="clases\AplicadorFiltros.cs" />
     <Compile Include="clases\filtros\AjustesImagen.cs" />
+    <Compile Include="clases\MapeoEtiquetado.cs" />
     <Compile Include="clases\filtros\filtrosArtisticos.cs" />
     <Compile Include="clases\filtros\FiltrosBordesSuavizado.cs" />
     <Compile Include="clases\filtros\FiltrosColor.cs" />
@@ -90,6 +91,7 @@
     <Compile Include="clases\filtros\FiltrosPosterizadoSolarizado.cs" />
     <Compile Include="clases\filtros\FiltrosPracticos2.cs" />
     <Compile Include="clases\filtros\FiltrodConFourier.cs" />
+    <Compile Include="clases\filtros\RedimesionarImagen.cs" />
     <Compile Include="clases\ImagenManager.cs" />
     <Compile Include="MenusFiltros\PasoBajoDialog.cs">
       <SubType>Form</SubType>
