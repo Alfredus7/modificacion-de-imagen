@@ -9,83 +9,103 @@ namespace modificacion_de_imagen.clases
 {
     public class MapeoEtiquetado
     {
-
-        // Método para contar objetos con conectividad-4 o conectividad-8
+        // (｡♥‿♥｡) Método para contar objetos con conectividad-4 o conectividad-8
+        // Este método permite contar los objetos en una imagen binaria usando dos tipos de conectividad:
+        // 1. Conectividad-4: los objetos se consideran conectados solo si comparten un borde horizontal o vertical.
+        // 2. Conectividad-8: los objetos se consideran conectados si comparten un borde, o un vértice (diagonal).
         public int ContarObjetos(Bitmap imagen, int conectividad)
         {
-            // Convertimos la imagen a blanco y negro para trabajar con binario
-            Grayscale grayscale = new Grayscale(0.2125, 0.7154, 0.0721);
-            Bitmap imagenGris = grayscale.Apply(imagen);
-            Threshold binarizador = new Threshold(1);
-            Bitmap imagenBinaria = binarizador.Apply(imagenGris);
+            var imagenBinaria = BinarizarImagen(imagen);
 
-            // Dependiendo de la conectividad, usaremos la búsqueda personalizada
-            if (conectividad == 4)
-                return ContarObjetosConectividad4(imagenBinaria);
-            else
-                return ContarObjetosConectividad8(imagenBinaria);
+            // Llamada al método apropiado dependiendo de la conectividad seleccionada
+            return conectividad == 4
+                ? ContarObjetosConectividad4(imagenBinaria)  // Método de conectividad-4
+                : ContarObjetosConectividad8(imagenBinaria); // Método de conectividad-8
         }
 
-        // Conteo de objetos usando conectividad-4 (BFS)
+        // (✿◠‿◠) Método mágico para binarizar la imagen
+        // Convierte la imagen en escala de grises y luego la binariza usando un umbral.
+        // El umbral se establece en 1 para hacer la imagen binaria (blanco y negro).
+        private Bitmap BinarizarImagen(Bitmap imagen)
+        {
+            var grayscale = new Grayscale(0.2125, 0.7154, 0.0721); // Conversión a escala de grises
+            var imagenGris = grayscale.Apply(imagen);
+            var binarizador = new Threshold(1); // Binarización
+            return binarizador.Apply(imagenGris);
+        }
+
+        // (╹◡╹) Conteo con conectividad-4 usando BFS (Breadth-First Search)
+        // En la conectividad-4, un píxel está conectado a otros píxeles si están en una de las 4 direcciones cardinales (arriba, abajo, izquierda, derecha).
+        // Este método usa un algoritmo BFS para explorar todos los píxeles conectados a un píxel inicial.
         private int ContarObjetosConectividad4(Bitmap imagen)
         {
-            int width = imagen.Width;
-            int height = imagen.Height;
-            bool[,] visitado = new bool[width, height];
-            int count = 0;
+            int width = imagen.Width, height = imagen.Height;
+            bool[,] visitado = new bool[width, height]; // Matriz para marcar píxeles visitados
+            int count = 0; // Contador de objetos encontrados
 
-            // Direcciones de conectividad-4: arriba, abajo, izquierda, derecha
-            int[] dx = { -1, 1, 0, 0 };
-            int[] dy = { 0, 0, -1, 1 };
+            // Definimos los movimientos posibles para conectividad-4
+            int[] dx = { -1, 1, 0, 0 }; // Movimientos horizontales
+            int[] dy = { 0, 0, -1, 1 }; // Movimientos verticales
 
-            // Función para realizar una búsqueda BFS
-            void BFS(int x, int y)
+            BitmapData data = imagen.LockBits(new Rectangle(0, 0, width, height),
+                                              ImageLockMode.ReadOnly,
+                                              PixelFormat.Format8bppIndexed);
+
+            unsafe
             {
-                Queue<Point> cola = new Queue<Point>();
-                cola.Enqueue(new Point(x, y));
-                visitado[x, y] = true;
+                byte* ptr = (byte*)data.Scan0;
+                int stride = data.Stride;
 
-                while (cola.Count > 0)
+                // Función BFS para explorar objetos conectados
+                void BFS(int x, int y)
                 {
-                    var punto = cola.Dequeue();
+                    Queue<Point> cola = new Queue<Point>();
+                    cola.Enqueue(new Point(x, y)); // Añadimos el punto inicial a la cola
+                    visitado[x, y] = true; // Marcamos el punto como visitado
 
-                    for (int i = 0; i < 4; i++)  // Recorremos las 4 direcciones
+                    while (cola.Count > 0)
                     {
-                        int nuevoX = punto.X + dx[i];
-                        int nuevoY = punto.Y + dy[i];
+                        Point p = cola.Dequeue();
 
-                        // Verificar que esté dentro de los límites de la imagen y no haya sido visitado
-                        if (nuevoX >= 0 && nuevoY >= 0 && nuevoX < width && nuevoY < height &&
-                            !visitado[nuevoX, nuevoY] && imagen.GetPixel(nuevoX, nuevoY).R == 255)  // 255 es blanco
+                        // Iteramos sobre los 4 posibles movimientos (conectividad-4)
+                        for (int i = 0; i < 4; i++)
                         {
-                            cola.Enqueue(new Point(nuevoX, nuevoY));
-                            visitado[nuevoX, nuevoY] = true;
+                            int nx = p.X + dx[i], ny = p.Y + dy[i];
+                            // Verificamos si el nuevo punto está dentro de los límites de la imagen y no ha sido visitado
+                            if (nx >= 0 && ny >= 0 && nx < width && ny < height &&
+                                !visitado[nx, ny] && ptr[ny * stride + nx] == 255) // El valor 255 indica píxel blanco (objeto)
+                            {
+                                cola.Enqueue(new Point(nx, ny));
+                                visitado[nx, ny] = true; // Marcamos el píxel como visitado
+                            }
+                        }
+                    }
+                }
+
+                // Recorremos toda la imagen buscando objetos
+                for (int y = 0; y < height; y++)
+                {
+                    for (int x = 0; x < width; x++)
+                    {
+                        if (ptr[y * stride + x] == 255 && !visitado[x, y]) // Si es un píxel blanco no visitado
+                        {
+                            BFS(x, y); // Llamamos a BFS para contar este objeto
+                            count++; // Incrementamos el contador de objetos
                         }
                     }
                 }
             }
 
-            // Recorremos cada píxel de la imagen
-            for (int x = 0; x < width; x++)
-            {
-                for (int y = 0; y < height; y++)
-                {
-                    if (imagen.GetPixel(x, y).R == 255 && !visitado[x, y])  // Si es blanco y no ha sido visitado
-                    {
-                        BFS(x, y);
-                        count++;
-                    }
-                }
-            }
-
+            imagen.UnlockBits(data); // Desbloqueamos la imagen después de procesarla
             return count;
         }
 
-        // Conteo de objetos usando conectividad-8 (usando Accord)
+        // (◕‿◕✿) Conteo de objetos con conectividad-8 usando Accord
+        // En la conectividad-8, un píxel está conectado a otros píxeles si están en cualquiera de las 8 direcciones posibles.
+        // Esto incluye las 4 direcciones cardinales y las 4 diagonales.
         private int ContarObjetosConectividad8(Bitmap imagen)
         {
-            // Procesamos la imagen con BlobCounter para conectividad-8
-            BlobCounter blobCounter = new BlobCounter
+            var blobCounter = new BlobCounter
             {
                 FilterBlobs = true,
                 MinWidth = 1,
@@ -93,70 +113,53 @@ namespace modificacion_de_imagen.clases
                 ObjectsOrder = ObjectsOrder.None
             };
 
-            blobCounter.ProcessImage(imagen);
-            Blob[] blobs = blobCounter.GetObjectsInformation();
-
-            return blobs.Length;
+            blobCounter.ProcessImage(imagen); // Procesamos la imagen para contar objetos
+            return blobCounter.GetObjectsInformation().Length; // Retorna la cantidad de objetos encontrados
         }
 
+        // (≧◡≦) Método superkawaii para colorear los objetos encontrados ✧*:･ﾟ✧
+        // Este método asigna un color único a cada objeto encontrado, coloreándolos sobre la imagen original.
         public Bitmap ColorearObjetosEncontrados(Bitmap original)
         {
-            // First convert to grayscale and threshold if needed
-            Grayscale grayscale = new Grayscale(0.2125, 0.7154, 0.0721);
-            Bitmap imagenGris = grayscale.Apply(original);
-            Threshold binarizador = new Threshold(1);
-            Bitmap imagenBinaria = binarizador.Apply(imagenGris);
-
-            BlobCounter blobCounter = new BlobCounter
+            var imagenBinaria = BinarizarImagen(original);
+            var blobCounter = new BlobCounter
             {
                 FilterBlobs = true,
                 MinWidth = 1,
                 MinHeight = 1,
                 ObjectsOrder = ObjectsOrder.None
             };
-
-            // Process the image first!
             blobCounter.ProcessImage(imagenBinaria);
+            Blob[] blobs = blobCounter.GetObjectsInformation();
 
-            // Crear bitmap de resultado con el mismo formato que el original
-            Bitmap resultado = new Bitmap(original.Width, original.Height, original.PixelFormat);
+            Bitmap resultado = new Bitmap(original.Width, original.Height, PixelFormat.Format24bppRgb);
 
             using (Graphics g = Graphics.FromImage(resultado))
+                g.Clear(Color.Black); // Fondo negro para resaltar los objetos
+
+            Color[] colores = {
+                Color.Red, Color.Lime, Color.Blue, Color.Yellow,
+                Color.Cyan, Color.Magenta, Color.Orange, Color.Pink,
+                Color.Purple, Color.Brown, Color.Teal, Color.Olive
+            };
+            Random rand = new Random();
+
+            foreach (Blob blob in blobs)
             {
-                g.Clear(Color.Black); // Fondo negro
+                Color color = Array.IndexOf(blobs, blob) < colores.Length ?
+                    colores[Array.IndexOf(blobs, blob)] :
+                    Color.FromArgb(rand.Next(256), rand.Next(256), rand.Next(256)); // Asignamos un color
 
-                // Obtener información de cada blob
-                Blob[] blobs = blobCounter.GetObjectsInformation();
+                // Extraemos la imagen del blob y copiamos los píxeles al resultado
+                blobCounter.ExtractBlobsImage(imagenBinaria, blob, false);
 
-                // Paleta de colores predefinida
-                Color[] colores = new Color[]
+                for (int y = 0; y < blob.Rectangle.Height; y++)
                 {
-            Color.Red, Color.Lime, Color.Blue, Color.Yellow,
-            Color.Cyan, Color.Magenta, Color.Orange, Color.Pink,
-            Color.Purple, Color.Brown, Color.Teal, Color.Olive
-                };
-
-                Random rand = new Random();
-
-                foreach (Blob blob in blobs)
-                {
-                    Color color = Array.IndexOf(blobs, blob) < colores.Length ?
-                        colores[Array.IndexOf(blobs, blob)] :
-                        Color.FromArgb(rand.Next(256), rand.Next(256), rand.Next(256));
-
-                    // Extraer la imagen del blob
-                    blobCounter.ExtractBlobsImage(imagenBinaria, blob, false);
-
-                    // Copiar los píxeles del blob al resultado
-                    for (int y = 0; y < blob.Rectangle.Height; y++)
+                    for (int x = 0; x < blob.Rectangle.Width; x++)
                     {
-                        for (int x = 0; x < blob.Rectangle.Width; x++)
+                        if (blob.Image != null && blob.Image.GetPixel(x, y).R > 0)
                         {
-                            // Verificar si el píxel pertenece al blob
-                            if (blob.Image != null && blob.Image.GetPixel(x, y).R > 0)
-                            {
-                                resultado.SetPixel(blob.Rectangle.X + x, blob.Rectangle.Y + y, color);
-                            }
+                            resultado.SetPixel(blob.Rectangle.X + x, blob.Rectangle.Y + y, color);
                         }
                     }
                 }
@@ -164,6 +167,5 @@ namespace modificacion_de_imagen.clases
 
             return resultado;
         }
-
     }
 }
