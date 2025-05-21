@@ -123,6 +123,24 @@
     <Compile Include="MenusFiltros\HightBostDialog.Designer.cs">
       <DependentUpon>HightBostDialog.cs</DependentUpon>
     </Compile>
+    <Compile Include="MenusFiltros\FormManhattan.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MenusFiltros\FormManhattan.Designer.cs">
+      <DependentUpon>FormManhattan.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MenusFiltros\FormEuclidiana.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MenusFiltros\FormEuclidiana.Designer.cs">
+      <DependentUpon>FormEuclidiana.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MenusFiltros\FormChebyshev.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MenusFiltros\FormChebyshev.Designer.cs">
+      <DependentUpon>FormChebyshev.cs</DependentUpon>
+    </Compile>
     <Compile Include="MenusFiltros\SaturacionDialog.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -172,6 +190,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="MenusFiltros\HightBostDialog.resx">
       <DependentUpon>HightBostDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MenusFiltros\FormManhattan.resx">
+      <DependentUpon>FormManhattan.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MenusFiltros\FormEuclidiana.resx">
+      <DependentUpon>FormEuclidiana.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MenusFiltros\FormChebyshev.resx">
+      <DependentUpon>FormChebyshev.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MenusFiltros\SaturacionDialog.resx">
       <DependentUpon>SaturacionDialog.cs</DependentUpon>

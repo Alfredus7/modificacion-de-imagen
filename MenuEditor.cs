@@ -51,7 +51,7 @@ namespace modificacion_de_imagen
             if (lbInformacion == null) return;
 
             lbInformacion.Text = $"Nombre: {nombre} | Dimensiones: {imagen.Width}x{imagen.Height}px | " +
-                                 $"Formato: {imagen.PixelFormat} | DPI: {imagen.HorizontalResolution} x {imagen.VerticalResolution}";
+                                 $"Formato: {imagen.PixelFormat}";
         }
 
         // --- Menú eventos ---
@@ -149,14 +149,23 @@ namespace modificacion_de_imagen
         private void toolStripMenuItem2_Click(object sender, EventArgs e)
         {
             pictureBox1.Image = mapeoEtiquetado.ColorearObjetosEncontrados(new Bitmap(pictureBox1.Image));
-            lbInformacion.Text = "contaron"+ mapeoEtiquetado.ContarObjetos(new Bitmap(pictureBox1.Image), 4);
+            lbInformacion.Text = "se han contaron con 4 conectividad " + mapeoEtiquetado.ContarObjetos(new Bitmap(pictureBox1.Image), 4);
         }
 
         private void toolStripMenuItem3_Click(object sender, EventArgs e)
         {
-            lbInformacion.Text = "contaron" + mapeoEtiquetado.ContarObjetos(new Bitmap(pictureBox1.Image), 8);
+            lbInformacion.Text = "se han contaron con 8 conectividad " + mapeoEtiquetado.ContarObjetos(new Bitmap(pictureBox1.Image), 8);
             pictureBox1.Image = mapeoEtiquetado.ColorearObjetosEncontrados(new Bitmap(pictureBox1.Image));
             
         }
+
+        private void euclidianToolStripMenuItem_Click(object sender, EventArgs e)
+        => AplicarFiltroConDialog(img => new FormEuclidiana(img));
+
+        private void ManhattanToolStripMenuItem_Click(object sender, EventArgs e)
+        => AplicarFiltroConDialog(img => new FormManhattan(img));
+
+        private void chebyshevToolStripMenuItem_Click(object sender, EventArgs e)
+       => AplicarFiltroConDialog(img => new FormChebyshev(img));
     }
 }

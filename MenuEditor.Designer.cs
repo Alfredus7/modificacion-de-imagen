@@ -91,6 +91,10 @@
             this.mapeoConteoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem3 = new System.Windows.Forms.ToolStripMenuItem();
+            this.medicionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.euclidianToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.ManhattanToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.chebyshevToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.Ui.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.menuEdicionImagen.SuspendLayout();
@@ -512,7 +516,8 @@
             this.tamañoToolStripMenuItem,
             this.rotarToolStripMenuItem,
             this.transformadasToolStripMenuItem,
-            this.mapeoConteoToolStripMenuItem});
+            this.mapeoConteoToolStripMenuItem,
+            this.medicionToolStripMenuItem});
             this.edicionToolStripMenuItem.Enabled = false;
             this.edicionToolStripMenuItem.ForeColor = System.Drawing.SystemColors.Control;
             this.edicionToolStripMenuItem.Name = "edicionToolStripMenuItem";
@@ -606,16 +611,47 @@
             // toolStripMenuItem2
             // 
             this.toolStripMenuItem2.Name = "toolStripMenuItem2";
-            this.toolStripMenuItem2.Size = new System.Drawing.Size(180, 22);
+            this.toolStripMenuItem2.Size = new System.Drawing.Size(151, 22);
             this.toolStripMenuItem2.Text = "4 conectividad";
             this.toolStripMenuItem2.Click += new System.EventHandler(this.toolStripMenuItem2_Click);
             // 
             // toolStripMenuItem3
             // 
             this.toolStripMenuItem3.Name = "toolStripMenuItem3";
-            this.toolStripMenuItem3.Size = new System.Drawing.Size(180, 22);
+            this.toolStripMenuItem3.Size = new System.Drawing.Size(151, 22);
             this.toolStripMenuItem3.Text = "8 conectividad";
             this.toolStripMenuItem3.Click += new System.EventHandler(this.toolStripMenuItem3_Click);
+            // 
+            // medicionToolStripMenuItem
+            // 
+            this.medicionToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.euclidianToolStripMenuItem,
+            this.ManhattanToolStripMenuItem,
+            this.chebyshevToolStripMenuItem});
+            this.medicionToolStripMenuItem.Name = "medicionToolStripMenuItem";
+            this.medicionToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.medicionToolStripMenuItem.Text = "medicion";
+            // 
+            // euclidianToolStripMenuItem
+            // 
+            this.euclidianToolStripMenuItem.Name = "euclidianToolStripMenuItem";
+            this.euclidianToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.euclidianToolStripMenuItem.Text = "euclidian";
+            this.euclidianToolStripMenuItem.Click += new System.EventHandler(this.euclidianToolStripMenuItem_Click);
+            // 
+            // ManhattanToolStripMenuItem
+            // 
+            this.ManhattanToolStripMenuItem.Name = "ManhattanToolStripMenuItem";
+            this.ManhattanToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.ManhattanToolStripMenuItem.Text = "Manhattan";
+            this.ManhattanToolStripMenuItem.Click += new System.EventHandler(this.ManhattanToolStripMenuItem_Click);
+            // 
+            // chebyshevToolStripMenuItem
+            // 
+            this.chebyshevToolStripMenuItem.Name = "chebyshevToolStripMenuItem";
+            this.chebyshevToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.chebyshevToolStripMenuItem.Text = "Chebyshev";
+            this.chebyshevToolStripMenuItem.Click += new System.EventHandler(this.chebyshevToolStripMenuItem_Click);
             // 
             // MenuEditor
             // 
@@ -703,6 +739,10 @@
         private System.Windows.Forms.ToolStripMenuItem mapeoConteoToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem2;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem3;
+        private System.Windows.Forms.ToolStripMenuItem medicionToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem euclidianToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem ManhattanToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem chebyshevToolStripMenuItem;
     }
 }
 
