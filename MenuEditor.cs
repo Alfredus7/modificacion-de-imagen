@@ -167,5 +167,8 @@ namespace modificacion_de_imagen
 
         private void chebyshevToolStripMenuItem_Click(object sender, EventArgs e)
        => AplicarFiltroConDialog(img => new FormChebyshev(img));
+
+        private void gammaCorrectionToolStripMenuItem_Click(object sender, EventArgs e)
+       => AplicarFiltro(ajustesImagen.Aplicargamma);
     }
 }

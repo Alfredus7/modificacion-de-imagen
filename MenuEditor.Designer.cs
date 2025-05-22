@@ -95,6 +95,7 @@
             this.euclidianToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ManhattanToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.chebyshevToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.gammaCorrectionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.Ui.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.menuEdicionImagen.SuspendLayout();
@@ -206,9 +207,10 @@
             this.ajusteImagenToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.brillocontrasteToolStripMenuItem,
             this.tonossaturacionToolStripMenuItem,
-            this.histogramaEquatizacionToolStripMenuItem});
+            this.histogramaEquatizacionToolStripMenuItem,
+            this.gammaCorrectionToolStripMenuItem});
             this.ajusteImagenToolStripMenuItem.Name = "ajusteImagenToolStripMenuItem";
-            this.ajusteImagenToolStripMenuItem.Size = new System.Drawing.Size(150, 22);
+            this.ajusteImagenToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.ajusteImagenToolStripMenuItem.Text = "Ajuste imagen";
             // 
             // brillocontrasteToolStripMenuItem
@@ -247,7 +249,7 @@
             this.bordesToolStripMenuItem,
             this.nuevosfiltrosToolStripMenuItem});
             this.filtrosArtisticosToolStripMenuItem.Name = "filtrosArtisticosToolStripMenuItem";
-            this.filtrosArtisticosToolStripMenuItem.Size = new System.Drawing.Size(150, 22);
+            this.filtrosArtisticosToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.filtrosArtisticosToolStripMenuItem.Text = "Filtros";
             // 
             // falsoColorToolStripMenuItem
@@ -527,14 +529,14 @@
             // revertirToolStripMenuItem
             // 
             this.revertirToolStripMenuItem.Name = "revertirToolStripMenuItem";
-            this.revertirToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.revertirToolStripMenuItem.Size = new System.Drawing.Size(154, 22);
             this.revertirToolStripMenuItem.Text = "revertir";
             this.revertirToolStripMenuItem.Click += new System.EventHandler(this.revertirToolStripMenuItem_Click);
             // 
             // tamañoToolStripMenuItem
             // 
             this.tamañoToolStripMenuItem.Name = "tamañoToolStripMenuItem";
-            this.tamañoToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.tamañoToolStripMenuItem.Size = new System.Drawing.Size(154, 22);
             this.tamañoToolStripMenuItem.Text = "tamaño";
             this.tamañoToolStripMenuItem.Click += new System.EventHandler(this.tamañoToolStripMenuItem_Click);
             // 
@@ -543,7 +545,7 @@
             this.rotarToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.rotar90ToolStripMenuItem});
             this.rotarToolStripMenuItem.Name = "rotarToolStripMenuItem";
-            this.rotarToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.rotarToolStripMenuItem.Size = new System.Drawing.Size(154, 22);
             this.rotarToolStripMenuItem.Text = "rotar";
             // 
             // rotar90ToolStripMenuItem
@@ -561,7 +563,7 @@
             this.convoluciónDirectaToolStripMenuItem,
             this.compararConvolucionesToolStripMenuItem});
             this.transformadasToolStripMenuItem.Name = "transformadasToolStripMenuItem";
-            this.transformadasToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.transformadasToolStripMenuItem.Size = new System.Drawing.Size(154, 22);
             this.transformadasToolStripMenuItem.Text = "transformadas";
             // 
             // FFT_ToolStripMenuItem
@@ -605,7 +607,7 @@
             this.toolStripMenuItem2,
             this.toolStripMenuItem3});
             this.mapeoConteoToolStripMenuItem.Name = "mapeoConteoToolStripMenuItem";
-            this.mapeoConteoToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.mapeoConteoToolStripMenuItem.Size = new System.Drawing.Size(154, 22);
             this.mapeoConteoToolStripMenuItem.Text = "´mapeo conteo";
             // 
             // toolStripMenuItem2
@@ -629,29 +631,36 @@
             this.ManhattanToolStripMenuItem,
             this.chebyshevToolStripMenuItem});
             this.medicionToolStripMenuItem.Name = "medicionToolStripMenuItem";
-            this.medicionToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.medicionToolStripMenuItem.Size = new System.Drawing.Size(154, 22);
             this.medicionToolStripMenuItem.Text = "medicion";
             // 
             // euclidianToolStripMenuItem
             // 
             this.euclidianToolStripMenuItem.Name = "euclidianToolStripMenuItem";
-            this.euclidianToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.euclidianToolStripMenuItem.Size = new System.Drawing.Size(132, 22);
             this.euclidianToolStripMenuItem.Text = "euclidian";
             this.euclidianToolStripMenuItem.Click += new System.EventHandler(this.euclidianToolStripMenuItem_Click);
             // 
             // ManhattanToolStripMenuItem
             // 
             this.ManhattanToolStripMenuItem.Name = "ManhattanToolStripMenuItem";
-            this.ManhattanToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.ManhattanToolStripMenuItem.Size = new System.Drawing.Size(132, 22);
             this.ManhattanToolStripMenuItem.Text = "Manhattan";
             this.ManhattanToolStripMenuItem.Click += new System.EventHandler(this.ManhattanToolStripMenuItem_Click);
             // 
             // chebyshevToolStripMenuItem
             // 
             this.chebyshevToolStripMenuItem.Name = "chebyshevToolStripMenuItem";
-            this.chebyshevToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.chebyshevToolStripMenuItem.Size = new System.Drawing.Size(132, 22);
             this.chebyshevToolStripMenuItem.Text = "Chebyshev";
             this.chebyshevToolStripMenuItem.Click += new System.EventHandler(this.chebyshevToolStripMenuItem_Click);
+            // 
+            // gammaCorrectionToolStripMenuItem
+            // 
+            this.gammaCorrectionToolStripMenuItem.Name = "gammaCorrectionToolStripMenuItem";
+            this.gammaCorrectionToolStripMenuItem.Size = new System.Drawing.Size(204, 22);
+            this.gammaCorrectionToolStripMenuItem.Text = "gamma correction";
+            this.gammaCorrectionToolStripMenuItem.Click += new System.EventHandler(this.gammaCorrectionToolStripMenuItem_Click);
             // 
             // MenuEditor
             // 
@@ -743,6 +752,7 @@
         private System.Windows.Forms.ToolStripMenuItem euclidianToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem ManhattanToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem chebyshevToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem gammaCorrectionToolStripMenuItem;
     }
 }
 

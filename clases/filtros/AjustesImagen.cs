@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Drawing;
+using System.Drawing.Imaging;
 using Accord.Imaging.Filters;
 
 namespace modificacion_de_imagen.clases
@@ -36,6 +37,11 @@ namespace modificacion_de_imagen.clases
             return histogramaFiltro.Apply(imagen);
         }
 
+        public Bitmap Aplicargamma(Bitmap original)
+        {
+            var gammaFiltro = new GammaCorrection(0.8);
+            return gammaFiltro.Apply(original.Clone(new Rectangle(0, 0, original.Width, original.Height), PixelFormat.Format24bppRgb));
+        }
         /// <summary>
         /// Redimensiona una imagen al tamaño especificado.
         /// </summary>
