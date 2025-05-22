@@ -62,64 +62,64 @@ namespace modificacion_de_imagen.MenusFiltros
 
             int cuadricula = (int)numericUpDownValor.Value;
 
-            Point pConsultaGrid = new Point(
+            Point pConsultaCelda = new Point(
                 puntoConsulta.X / cuadricula,
                 puntoConsulta.Y / cuadricula
             );
 
             double distanciaMin = double.MaxValue;
-            Point puntoMasCercano = Point.Empty;
+            Point puntoMasCercanoCelda = Point.Empty;
+            Point puntoMasCercanoReal = Point.Empty; // <- este es el nuevo
 
             foreach (var p in poblaciones)
             {
-                Point pGrid = new Point(p.X / cuadricula, p.Y / cuadricula);
-
-                // Distancia Manhattan (✧ω✧)
-                double distancia = Math.Abs(pGrid.X - pConsultaGrid.X) + Math.Abs(pGrid.Y - pConsultaGrid.Y);
+                Point pCelda = new Point(p.X / cuadricula, p.Y / cuadricula);
+                double distancia = Math.Abs(pCelda.X - pConsultaCelda.X) + Math.Abs(pCelda.Y - pConsultaCelda.Y);
 
                 if (distancia < distanciaMin)
                 {
                     distanciaMin = distancia;
-                    puntoMasCercano = p;
+                    puntoMasCercanoCelda = pCelda;
+                    puntoMasCercanoReal = p; // <- guardamos el punto original
                 }
             }
 
-            // Mostrar distancia kawaii ✿
             lbdistancia.Text = $"Distancia Manhattan: {distanciaMin}";
 
-            // Redibujar imagen con cuadrícula y punto más cercano
             ImageToProcess?.Dispose();
             ImageToProcess = new Bitmap(originalImage);
 
             using (Graphics g = Graphics.FromImage(ImageToProcess))
             {
                 Pen naranja = new Pen(Color.Orange, 3);
-                Pen naranjaoscura = new Pen(Color.DarkOrange, 1);
-                Pen camino = new Pen(Color.OrangeRed, 2); // 💖 Color kawaii para la ruta
+                Pen naranjaOscura = new Pen(Color.DarkOrange, 1);
+                Pen camino = new Pen(Color.OrangeRed, 2);
 
-                // 🌸 Dibujar la cuadrícula
+                // Dibujar cuadrícula
                 for (int x = 0; x < ImageToProcess.Width; x += cuadricula)
-                    g.DrawLine(naranjaoscura, x, 0, x, ImageToProcess.Height);
+                    g.DrawLine(naranjaOscura, x, 0, x, ImageToProcess.Height);
 
                 for (int y = 0; y < ImageToProcess.Height; y += cuadricula)
-                    g.DrawLine(naranjaoscura, 0, y, ImageToProcess.Width, y);
+                    g.DrawLine(naranjaOscura, 0, y, ImageToProcess.Width, y);
 
-                // 🎯 Dibujar el punto más cercano
-                g.DrawEllipse(naranja, puntoMasCercano.X - 5, puntoMasCercano.Y - 5, 10, 10);
+                // Ruta Manhattan desde el punto de consulta al punto más cercano (en base a celdas)
+                Point inicio = new Point(pConsultaCelda.X * cuadricula, pConsultaCelda.Y * cuadricula);
+                Point intermedio = new Point(puntoMasCercanoCelda.X * cuadricula, inicio.Y);
+                Point destino = new Point(puntoMasCercanoCelda.X * cuadricula, puntoMasCercanoCelda.Y * cuadricula);
 
-                // 💫 Dibujar la ruta Manhattan: primero en X, luego en Y
-                Point inicio = puntoConsulta;
-                Point intermedio = new Point(puntoMasCercano.X, puntoConsulta.Y);
-                Point destino = puntoMasCercano;
-
-                // Paso 1: línea horizontal
                 g.DrawLine(camino, inicio, intermedio);
-                // Paso 2: línea vertical
                 g.DrawLine(camino, intermedio, destino);
+
+                // 🎯 Ahora dibujamos el círculo directamente en el punto real más cercano
+                int radio = 10;
+                g.FillEllipse(Brushes.Orange, puntoMasCercanoReal.X - radio / 2, puntoMasCercanoReal.Y - radio / 2, radio, radio);
             }
 
             pictureBoxPreview.Image = ImageToProcess;
         }
+
+
+
 
 
         private void DetectarPuntos(Bitmap bmp)
