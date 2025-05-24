@@ -85,11 +85,11 @@
             // 
             this.lblConteo.AutoSize = true;
             this.lblConteo.ForeColor = System.Drawing.SystemColors.Control;
-            this.lblConteo.Location = new System.Drawing.Point(303, 205);
+            this.lblConteo.Location = new System.Drawing.Point(398, 209);
             this.lblConteo.Name = "lblConteo";
-            this.lblConteo.Size = new System.Drawing.Size(43, 13);
+            this.lblConteo.Size = new System.Drawing.Size(96, 13);
             this.lblConteo.TabIndex = 22;
-            this.lblConteo.Text = "contaro";
+            this.lblConteo.Text = "Autos detectados: ";
             // 
             // numericAreaMax
             // 
@@ -212,7 +212,7 @@
             this.btndetectar.BackColor = System.Drawing.Color.Gray;
             this.btndetectar.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btndetectar.ForeColor = System.Drawing.SystemColors.Control;
-            this.btndetectar.Location = new System.Drawing.Point(401, 200);
+            this.btndetectar.Location = new System.Drawing.Point(306, 199);
             this.btndetectar.Name = "btndetectar";
             this.btndetectar.Size = new System.Drawing.Size(75, 23);
             this.btndetectar.TabIndex = 29;
