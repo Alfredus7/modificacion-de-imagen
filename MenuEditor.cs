@@ -172,25 +172,10 @@ namespace modificacion_de_imagen
         private void gammaCorrectionToolStripMenuItem_Click(object sender, EventArgs e)
        => AplicarFiltro(ajustesImagen.Aplicargamma);
 
+
+
         private void conteoautosToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-           if (pictureBox1.Image != null)
-    {
-        Bitmap original = new Bitmap(pictureBox1.Image);
-        var detector = new modificacion_de_imagen.clases.DetectorAutos();
-
-        Bitmap procesada;
-        int autos = detector.DetectarAutos(original, out procesada);
-
-        MessageBox.Show($"Autos detectados: {autos}", "Resultado (≧◡≦)");
-
-        pictureBox1.Image = procesada; // Mostrar resultado en otro PictureBox
-    }
-    else
-    {
-        MessageBox.Show("Carga una imagen primero~! (｡•́︿•̀｡)");
-    }
-        }
+        => AplicarFiltroConDialog(img => new DetectorAutosDialog(img));
 
 
 
