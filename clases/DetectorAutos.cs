@@ -11,119 +11,77 @@ namespace modificacion_de_imagen.clases
     {
         /// <summary>
         /// Detecta y cuenta autos en una imagen aérea tipo Bitmap (ej. desde PictureBox).
+        /// Permite definir tamaños mínimo y máximo de ancho y alto para los autos.
         /// </summary>
         public Bitmap DetectarAutos(Bitmap bitmapOriginal, out Bitmap imagenProcesada,
-            int cannyMin, int cannyMax)
+            int cannyMin, int cannyMax,
+            int anchoMin, int anchoMax, int altoMin, int altoMax)
         {
-            // ╔══════════════════════════════════╗
-            // ║       1. Preprocesamiento        ║
-            // ╚══════════════════════════════════╝
-
-            // Convertimos la imagen Bitmap a formato compatible con EmguCV (｡♥‿♥｡)
+            // 1. Preprocesamiento
             Image<Bgr, byte> imgOriginal = bitmapOriginal.ToImage<Bgr, byte>();
-
-            // Aplicamos el detector de bordes Canny (¡cuidado! está afilado (>ω<)✧)
             Image<Gray, byte> bordes = imgOriginal.Canny(cannyMin, cannyMax);
 
-            // ╔══════════════════════════════════╗
-            // ║   2. Operaciones morfológicas    ║
-            // ╚══════════════════════════════════╝
-
-            // Creamos un kernel rectangular para cerrar huequitos (´｡• ω •｡`)
+            // 2. Operaciones morfológicas
             Mat kernel = CvInvoke.GetStructuringElement(ElementShape.Rectangle, new Size(3, 3), new Point(-1, -1));
-
-            // Aplicamos "Close" para unir bordes discontinuos =^.^=
             CvInvoke.MorphologyEx(bordes, bordes, MorphOp.Close, kernel, new Point(-1, -1), 1, BorderType.Default, new MCvScalar());
 
-            // ╔══════════════════════════════════╗
-            // ║       3. Detección de autos      ║
-            // ╚══════════════════════════════════╝
-
-            // Creamos lista para guardar los contornos encontrados (ꈍᴗꈍ)
+            // 3. Detección de autos
             VectorOfVectorOfPoint contornos = new VectorOfVectorOfPoint();
             Mat jerarquia = new Mat();
-
-            // Detectamos contornos externos (ideal para objetos aislados como autos UwU)
             CvInvoke.FindContours(bordes, contornos, jerarquia, RetrType.External, ChainApproxMethod.ChainApproxSimple);
 
             int contador = 0;
 
             for (int i = 0; i < contornos.Size; i++)
             {
-                // Calculamos el área del contorno (´｡• ᵕ •｡`)
                 double area = CvInvoke.ContourArea(contornos[i]);
 
-                // Validamos si está dentro del rango deseado (*≧ω≦)
                 if (area > 1400 && area < 20000)
                 {
-                    // Obtenemos el rectángulo que encierra el contorno
                     Rectangle rect = CvInvoke.BoundingRectangle(contornos[i]);
 
-                    // Calculamos proporciones para filtrar por forma y contenido
+                    // Filtro por dimensiones
+                    if (rect.Width < anchoMin || rect.Width > anchoMax ||
+                        rect.Height < altoMin || rect.Height > altoMax)
+                    {
+                        continue;
+                    }
+
                     double aspecto = (double)rect.Width / rect.Height;
                     double areaRect = rect.Width * rect.Height;
                     double proporcionRelleno = area / areaRect;
 
-                    // Extraemos la subimagen dentro del rectángulo
                     var subImagen = imgOriginal.GetSubRect(rect);
                     MCvScalar media = CvInvoke.Mean(subImagen);
 
-                    // Si es muy brillante, probablemente no sea un auto (≧▽≦)
                     if (media.V0 > 220) continue;
 
-                    // Validamos forma alargada/típica de autos
                     if (aspecto > 0.4 && aspecto < 4.5 && proporcionRelleno > 0.2)
                     {
-                        contador++; // ¡Auto detectado! \(★ω★)/
-                        CvInvoke.Rectangle(imgOriginal, rect, new MCvScalar(0, 255, 0), 2); // Dibujamos el contorno verde
+                        contador++;
+                        CvInvoke.Rectangle(imgOriginal, rect, new MCvScalar(0, 255, 0), 2);
                     }
                 }
             }
 
-            /// ╔══════════════════════════════════╗
-            // ║        4. Resultado final        ║
-            // ╚══════════════════════════════════╝
-
-            // Convertimos la imagen procesada a Bitmap para devolverla al mundo exterior ૮₍ ´• ˕ •` ₎ა
-            // imagenProcesada = imgOriginal.ToBitmap();
-
-            // Guardamos el contador como tag de la imagen (*≧ω≦)
-            // imagenProcesada.Tag = contador;
-
-            // return imagenProcesada;
-
-            /////////////////////////////////////////////////////
-            // ╔══════════════════════════════════╗
-            // ║      5. Comparación visual       ║
-            // ╚══════════════════════════════════╝
-
+            // 4. Resultado final con comparación visual
             Bitmap bmpCanny = bordes.ToBitmap();
             Bitmap bmpResultado = imgOriginal.ToBitmap();
 
-            // Creamos una imagen nueva (collage lado a lado) para comparar
             int collageWidth = bmpCanny.Width + bmpResultado.Width;
             int collageHeight = Math.Max(bmpCanny.Height, bmpResultado.Height);
             Bitmap collage = new Bitmap(collageWidth, collageHeight);
 
             using (Graphics g = Graphics.FromImage(collage))
             {
-                g.Clear(Color.Black); // Fondo negro bonito (￣ω￣)
-
-                // Dibujamos imagen de bordes a la izquierda
+                g.Clear(Color.Black);
                 g.DrawImage(bmpCanny, 0, 0);
-
-                // Dibujamos imagen procesada a la derecha
                 g.DrawImage(bmpResultado, bmpCanny.Width, 0);
             }
 
-            // Le colocamos el contador como etiqueta al collage
             collage.Tag = contador;
-
-            // Y ahora devolvemos esta vista comparativa como resultado final (*°▽°*)
             imagenProcesada = collage;
             return collage;
-
         }
     }
 }
-

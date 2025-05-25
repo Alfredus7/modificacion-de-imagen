@@ -35,9 +35,17 @@
             this.numericCannyMin = new System.Windows.Forms.NumericUpDown();
             this.numericCannyMax = new System.Windows.Forms.NumericUpDown();
             this.btndetectar = new System.Windows.Forms.Button();
+            this.numericMin_width = new System.Windows.Forms.NumericUpDown();
+            this.numericMax_width = new System.Windows.Forms.NumericUpDown();
+            this.numericMin_height = new System.Windows.Forms.NumericUpDown();
+            this.numericMax_height = new System.Windows.Forms.NumericUpDown();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxPreview)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericCannyMin)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericCannyMax)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericMin_width)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericMax_width)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericMin_height)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericMax_height)).BeginInit();
             this.SuspendLayout();
             // 
             // buttonCancel
@@ -95,7 +103,7 @@
             0,
             0,
             0});
-            this.numericCannyMin.Location = new System.Drawing.Point(504, 219);
+            this.numericCannyMin.Location = new System.Drawing.Point(504, 24);
             this.numericCannyMin.Maximum = new decimal(new int[] {
             150,
             0,
@@ -124,7 +132,7 @@
             0,
             0,
             0});
-            this.numericCannyMax.Location = new System.Drawing.Point(504, 245);
+            this.numericCannyMax.Location = new System.Drawing.Point(504, 50);
             this.numericCannyMax.Maximum = new decimal(new int[] {
             300,
             0,
@@ -158,12 +166,132 @@
             this.btndetectar.UseVisualStyleBackColor = false;
             this.btndetectar.Click += new System.EventHandler(this.btnDetectar_Click);
             // 
+            // numericMin_width
+            // 
+            this.numericMin_width.DecimalPlaces = 1;
+            this.numericMin_width.Increment = new decimal(new int[] {
+            10,
+            0,
+            0,
+            0});
+            this.numericMin_width.Location = new System.Drawing.Point(504, 88);
+            this.numericMin_width.Maximum = new decimal(new int[] {
+            1000,
+            0,
+            0,
+            0});
+            this.numericMin_width.Minimum = new decimal(new int[] {
+            10,
+            0,
+            0,
+            0});
+            this.numericMin_width.Name = "numericMin_width";
+            this.numericMin_width.ReadOnly = true;
+            this.numericMin_width.Size = new System.Drawing.Size(120, 20);
+            this.numericMin_width.TabIndex = 31;
+            this.numericMin_width.Value = new decimal(new int[] {
+            30,
+            0,
+            0,
+            0});
+            // 
+            // numericMax_width
+            // 
+            this.numericMax_width.DecimalPlaces = 1;
+            this.numericMax_width.Increment = new decimal(new int[] {
+            10,
+            0,
+            0,
+            0});
+            this.numericMax_width.Location = new System.Drawing.Point(504, 114);
+            this.numericMax_width.Maximum = new decimal(new int[] {
+            1000,
+            0,
+            0,
+            0});
+            this.numericMax_width.Minimum = new decimal(new int[] {
+            10,
+            0,
+            0,
+            0});
+            this.numericMax_width.Name = "numericMax_width";
+            this.numericMax_width.ReadOnly = true;
+            this.numericMax_width.Size = new System.Drawing.Size(120, 20);
+            this.numericMax_width.TabIndex = 30;
+            this.numericMax_width.Value = new decimal(new int[] {
+            180,
+            0,
+            0,
+            0});
+            // 
+            // numericMin_height
+            // 
+            this.numericMin_height.DecimalPlaces = 1;
+            this.numericMin_height.Increment = new decimal(new int[] {
+            10,
+            0,
+            0,
+            0});
+            this.numericMin_height.Location = new System.Drawing.Point(504, 155);
+            this.numericMin_height.Maximum = new decimal(new int[] {
+            1000,
+            0,
+            0,
+            0});
+            this.numericMin_height.Minimum = new decimal(new int[] {
+            10,
+            0,
+            0,
+            0});
+            this.numericMin_height.Name = "numericMin_height";
+            this.numericMin_height.ReadOnly = true;
+            this.numericMin_height.Size = new System.Drawing.Size(120, 20);
+            this.numericMin_height.TabIndex = 33;
+            this.numericMin_height.Value = new decimal(new int[] {
+            30,
+            0,
+            0,
+            0});
+            // 
+            // numericMax_height
+            // 
+            this.numericMax_height.DecimalPlaces = 1;
+            this.numericMax_height.Increment = new decimal(new int[] {
+            10,
+            0,
+            0,
+            0});
+            this.numericMax_height.Location = new System.Drawing.Point(504, 181);
+            this.numericMax_height.Maximum = new decimal(new int[] {
+            1000,
+            0,
+            0,
+            0});
+            this.numericMax_height.Minimum = new decimal(new int[] {
+            10,
+            0,
+            0,
+            0});
+            this.numericMax_height.Name = "numericMax_height";
+            this.numericMax_height.ReadOnly = true;
+            this.numericMax_height.Size = new System.Drawing.Size(120, 20);
+            this.numericMax_height.TabIndex = 32;
+            this.numericMax_height.Value = new decimal(new int[] {
+            200,
+            0,
+            0,
+            0});
+            // 
             // DetectorAutosDialog
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.ClientSize = new System.Drawing.Size(709, 460);
+            this.Controls.Add(this.numericMin_height);
+            this.Controls.Add(this.numericMax_height);
+            this.Controls.Add(this.numericMin_width);
+            this.Controls.Add(this.numericMax_width);
             this.Controls.Add(this.btndetectar);
             this.Controls.Add(this.numericCannyMin);
             this.Controls.Add(this.numericCannyMax);
@@ -178,6 +306,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxPreview)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericCannyMin)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericCannyMax)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericMin_width)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericMax_width)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericMin_height)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericMax_height)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -191,5 +323,9 @@
         private System.Windows.Forms.NumericUpDown numericCannyMin;
         private System.Windows.Forms.NumericUpDown numericCannyMax;
         private System.Windows.Forms.Button btndetectar;
+        private System.Windows.Forms.NumericUpDown numericMin_width;
+        private System.Windows.Forms.NumericUpDown numericMax_width;
+        private System.Windows.Forms.NumericUpDown numericMin_height;
+        private System.Windows.Forms.NumericUpDown numericMax_height;
     }
 }
