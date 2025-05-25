@@ -27,12 +27,10 @@ namespace modificacion_de_imagen.MenusFiltros
 
             int cannyMin = (int)numericCannyMin.Value;
             int cannyMax = (int)numericCannyMax.Value;
-            double areaMin = (double)numericAreaMin.Value;
-            double areaMax = (double)numericAreaMax.Value;
 
             ImageToProcess = detector.DetectarAutos(
                 originalImage, out Bitmap procesada,
-                cannyMin, cannyMax, areaMin, areaMax);
+                cannyMin, cannyMax);
 
             pictureBoxPreview.Image = procesada;
             lblConteo.Text = $"Autos detectados: {ImageToProcess.Tag}";

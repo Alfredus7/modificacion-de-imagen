@@ -13,7 +13,7 @@ namespace modificacion_de_imagen.clases
         /// Detecta y cuenta autos en una imagen aérea tipo Bitmap (ej. desde PictureBox).
         /// </summary>
         public Bitmap DetectarAutos(Bitmap bitmapOriginal, out Bitmap imagenProcesada,
-            int cannyMin, int cannyMax, double areaMin, double areaMax)
+            int cannyMin, int cannyMax)
         {
             // ╔══════════════════════════════════╗
             // ║       1. Preprocesamiento        ║
@@ -22,11 +22,8 @@ namespace modificacion_de_imagen.clases
             // Convertimos la imagen Bitmap a formato compatible con EmguCV (｡♥‿♥｡)
             Image<Bgr, byte> imgOriginal = bitmapOriginal.ToImage<Bgr, byte>();
 
-            // Suavizamos la imagen para reducir ruido UwU
-            Image<Bgr, byte> imgSuavizada = imgOriginal.SmoothGaussian(5);
-
             // La convertimos a escala de grises (más fácil para detectar bordes ☆彡)
-            Image<Gray, byte> imgGris = imgSuavizada.Convert<Gray, byte>();
+            Image<Gray, byte> imgGris = imgOriginal.Convert<Gray, byte>();
 
             // Aplicamos el detector de bordes Canny (¡cuidado! está afilado (>ω<)✧)
             Image<Gray, byte> bordes = imgGris.Canny(cannyMin, cannyMax);
@@ -60,7 +57,7 @@ namespace modificacion_de_imagen.clases
                 double area = CvInvoke.ContourArea(contornos[i]);
 
                 // Validamos si está dentro del rango deseado (*≧ω≦)
-                if (area > areaMin && area < areaMax)
+                if (area > 1400 && area < 20000)
                 {
                     // Obtenemos el rectángulo que encierra el contorno
                     Rectangle rect = CvInvoke.BoundingRectangle(contornos[i]);
@@ -86,18 +83,49 @@ namespace modificacion_de_imagen.clases
                 }
             }
 
-            // ╔══════════════════════════════════╗
+            /// ╔══════════════════════════════════╗
             // ║        4. Resultado final        ║
             // ╚══════════════════════════════════╝
 
             // Convertimos la imagen procesada a Bitmap para devolverla al mundo exterior ૮₍ ´• ˕ •` ₎ა
-            imagenProcesada = imgOriginal.ToBitmap();
+            // imagenProcesada = imgOriginal.ToBitmap();
 
             // Guardamos el contador como tag de la imagen (*≧ω≦)
-            imagenProcesada.Tag = contador;
+            // imagenProcesada.Tag = contador;
 
-            // Devolvemos la imagen con los autos detectados
-            return imagenProcesada;
+            // return imagenProcesada;
+
+            /////////////////////////////////////////////////////
+            // ╔══════════════════════════════════╗
+            // ║      5. Comparación visual       ║
+            // ╚══════════════════════════════════╝
+
+            Bitmap bmpCanny = bordes.ToBitmap();
+            Bitmap bmpResultado = imgOriginal.ToBitmap();
+
+            // Creamos una imagen nueva (collage lado a lado) para comparar
+            int collageWidth = bmpCanny.Width + bmpResultado.Width;
+            int collageHeight = Math.Max(bmpCanny.Height, bmpResultado.Height);
+            Bitmap collage = new Bitmap(collageWidth, collageHeight);
+
+            using (Graphics g = Graphics.FromImage(collage))
+            {
+                g.Clear(Color.Black); // Fondo negro bonito (￣ω￣)
+
+                // Dibujamos imagen de bordes a la izquierda
+                g.DrawImage(bmpCanny, 0, 0);
+
+                // Dibujamos imagen procesada a la derecha
+                g.DrawImage(bmpResultado, bmpCanny.Width, 0);
+            }
+
+            // Le colocamos el contador como etiqueta al collage
+            collage.Tag = contador;
+
+            // Y ahora devolvemos esta vista comparativa como resultado final (*°▽°*)
+            imagenProcesada = collage;
+            return collage;
+
         }
     }
 }
