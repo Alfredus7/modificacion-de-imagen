@@ -22,11 +22,8 @@ namespace modificacion_de_imagen.clases
             // Convertimos la imagen Bitmap a formato compatible con EmguCV (｡♥‿♥｡)
             Image<Bgr, byte> imgOriginal = bitmapOriginal.ToImage<Bgr, byte>();
 
-            // La convertimos a escala de grises (más fácil para detectar bordes ☆彡)
-            Image<Gray, byte> imgGris = imgOriginal.Convert<Gray, byte>();
-
             // Aplicamos el detector de bordes Canny (¡cuidado! está afilado (>ω<)✧)
-            Image<Gray, byte> bordes = imgGris.Canny(cannyMin, cannyMax);
+            Image<Gray, byte> bordes = imgOriginal.Canny(cannyMin, cannyMax);
 
             // ╔══════════════════════════════════╗
             // ║   2. Operaciones morfológicas    ║
@@ -68,7 +65,7 @@ namespace modificacion_de_imagen.clases
                     double proporcionRelleno = area / areaRect;
 
                     // Extraemos la subimagen dentro del rectángulo
-                    var subImagen = imgGris.GetSubRect(rect);
+                    var subImagen = imgOriginal.GetSubRect(rect);
                     MCvScalar media = CvInvoke.Mean(subImagen);
 
                     // Si es muy brillante, probablemente no sea un auto (≧▽≦)
