@@ -39,6 +39,9 @@
             this.numericMax_width = new System.Windows.Forms.NumericUpDown();
             this.numericMin_height = new System.Windows.Forms.NumericUpDown();
             this.numericMax_height = new System.Windows.Forms.NumericUpDown();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxPreview)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericCannyMin)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericCannyMax)).BeginInit();
@@ -103,7 +106,7 @@
             0,
             0,
             0});
-            this.numericCannyMin.Location = new System.Drawing.Point(504, 24);
+            this.numericCannyMin.Location = new System.Drawing.Point(572, 57);
             this.numericCannyMin.Maximum = new decimal(new int[] {
             150,
             0,
@@ -132,7 +135,7 @@
             0,
             0,
             0});
-            this.numericCannyMax.Location = new System.Drawing.Point(504, 50);
+            this.numericCannyMax.Location = new System.Drawing.Point(572, 83);
             this.numericCannyMax.Maximum = new decimal(new int[] {
             300,
             0,
@@ -169,19 +172,14 @@
             // numericMin_width
             // 
             this.numericMin_width.DecimalPlaces = 1;
-            this.numericMin_width.Increment = new decimal(new int[] {
-            10,
-            0,
-            0,
-            0});
-            this.numericMin_width.Location = new System.Drawing.Point(504, 88);
+            this.numericMin_width.Location = new System.Drawing.Point(572, 135);
             this.numericMin_width.Maximum = new decimal(new int[] {
             1000,
             0,
             0,
             0});
             this.numericMin_width.Minimum = new decimal(new int[] {
-            10,
+            1,
             0,
             0,
             0});
@@ -198,19 +196,14 @@
             // numericMax_width
             // 
             this.numericMax_width.DecimalPlaces = 1;
-            this.numericMax_width.Increment = new decimal(new int[] {
-            10,
-            0,
-            0,
-            0});
-            this.numericMax_width.Location = new System.Drawing.Point(504, 114);
+            this.numericMax_width.Location = new System.Drawing.Point(572, 161);
             this.numericMax_width.Maximum = new decimal(new int[] {
             1000,
             0,
             0,
             0});
             this.numericMax_width.Minimum = new decimal(new int[] {
-            10,
+            1,
             0,
             0,
             0});
@@ -227,19 +220,14 @@
             // numericMin_height
             // 
             this.numericMin_height.DecimalPlaces = 1;
-            this.numericMin_height.Increment = new decimal(new int[] {
-            10,
-            0,
-            0,
-            0});
-            this.numericMin_height.Location = new System.Drawing.Point(504, 155);
+            this.numericMin_height.Location = new System.Drawing.Point(572, 222);
             this.numericMin_height.Maximum = new decimal(new int[] {
             1000,
             0,
             0,
             0});
             this.numericMin_height.Minimum = new decimal(new int[] {
-            10,
+            1,
             0,
             0,
             0});
@@ -256,19 +244,14 @@
             // numericMax_height
             // 
             this.numericMax_height.DecimalPlaces = 1;
-            this.numericMax_height.Increment = new decimal(new int[] {
-            10,
-            0,
-            0,
-            0});
-            this.numericMax_height.Location = new System.Drawing.Point(504, 181);
+            this.numericMax_height.Location = new System.Drawing.Point(572, 248);
             this.numericMax_height.Maximum = new decimal(new int[] {
             1000,
             0,
             0,
             0});
             this.numericMax_height.Minimum = new decimal(new int[] {
-            10,
+            1,
             0,
             0,
             0});
@@ -282,12 +265,45 @@
             0,
             0});
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.ForeColor = System.Drawing.SystemColors.Control;
+            this.label1.Location = new System.Drawing.Point(504, 206);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(24, 13);
+            this.label1.TabIndex = 34;
+            this.label1.Text = "alto";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.ForeColor = System.Drawing.SystemColors.Control;
+            this.label2.Location = new System.Drawing.Point(504, 119);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(37, 13);
+            this.label2.TabIndex = 35;
+            this.label2.Text = "ancho";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.ForeColor = System.Drawing.SystemColors.Control;
+            this.label3.Location = new System.Drawing.Point(504, 41);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(39, 13);
+            this.label3.TabIndex = 36;
+            this.label3.Text = "canny ";
+            // 
             // DetectorAutosDialog
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.ClientSize = new System.Drawing.Size(709, 460);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.numericMin_height);
             this.Controls.Add(this.numericMax_height);
             this.Controls.Add(this.numericMin_width);
@@ -327,5 +343,8 @@
         private System.Windows.Forms.NumericUpDown numericMax_width;
         private System.Windows.Forms.NumericUpDown numericMin_height;
         private System.Windows.Forms.NumericUpDown numericMax_height;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label3;
     }
 }
