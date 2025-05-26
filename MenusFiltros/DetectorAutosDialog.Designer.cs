@@ -42,6 +42,12 @@
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
+            this.label8 = new System.Windows.Forms.Label();
+            this.label10 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxPreview)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericCannyMin)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericCannyMax)).BeginInit();
@@ -106,7 +112,7 @@
             0,
             0,
             0});
-            this.numericCannyMin.Location = new System.Drawing.Point(572, 57);
+            this.numericCannyMin.Location = new System.Drawing.Point(512, 57);
             this.numericCannyMin.Maximum = new decimal(new int[] {
             150,
             0,
@@ -135,7 +141,7 @@
             0,
             0,
             0});
-            this.numericCannyMax.Location = new System.Drawing.Point(572, 83);
+            this.numericCannyMax.Location = new System.Drawing.Point(512, 83);
             this.numericCannyMax.Maximum = new decimal(new int[] {
             300,
             0,
@@ -172,7 +178,7 @@
             // numericMin_width
             // 
             this.numericMin_width.DecimalPlaces = 1;
-            this.numericMin_width.Location = new System.Drawing.Point(572, 135);
+            this.numericMin_width.Location = new System.Drawing.Point(512, 135);
             this.numericMin_width.Maximum = new decimal(new int[] {
             1000,
             0,
@@ -196,7 +202,7 @@
             // numericMax_width
             // 
             this.numericMax_width.DecimalPlaces = 1;
-            this.numericMax_width.Location = new System.Drawing.Point(572, 161);
+            this.numericMax_width.Location = new System.Drawing.Point(512, 161);
             this.numericMax_width.Maximum = new decimal(new int[] {
             1000,
             0,
@@ -220,7 +226,7 @@
             // numericMin_height
             // 
             this.numericMin_height.DecimalPlaces = 1;
-            this.numericMin_height.Location = new System.Drawing.Point(572, 222);
+            this.numericMin_height.Location = new System.Drawing.Point(512, 222);
             this.numericMin_height.Maximum = new decimal(new int[] {
             1000,
             0,
@@ -244,7 +250,7 @@
             // numericMax_height
             // 
             this.numericMax_height.DecimalPlaces = 1;
-            this.numericMax_height.Location = new System.Drawing.Point(572, 248);
+            this.numericMax_height.Location = new System.Drawing.Point(512, 248);
             this.numericMax_height.Maximum = new decimal(new int[] {
             1000,
             0,
@@ -295,12 +301,90 @@
             this.label3.TabIndex = 36;
             this.label3.Text = "canny ";
             // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.ForeColor = System.Drawing.SystemColors.Control;
+            this.label4.Location = new System.Drawing.Point(636, 83);
+            this.label4.Name = "label4";
+            this.label4.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.label4.Size = new System.Drawing.Size(56, 13);
+            this.label4.TabIndex = 37;
+            this.label4.Text = "cannyMax";
+            this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.ForeColor = System.Drawing.SystemColors.Control;
+            this.label5.Location = new System.Drawing.Point(636, 57);
+            this.label5.Name = "label5";
+            this.label5.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.label5.Size = new System.Drawing.Size(53, 13);
+            this.label5.TabIndex = 38;
+            this.label5.Text = "cannyMin";
+            this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.ForeColor = System.Drawing.SystemColors.Control;
+            this.label6.Location = new System.Drawing.Point(635, 137);
+            this.label6.Name = "label6";
+            this.label6.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.label6.Size = new System.Drawing.Size(54, 13);
+            this.label6.TabIndex = 39;
+            this.label6.Text = "anchoMin";
+            this.label6.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.ForeColor = System.Drawing.SystemColors.Control;
+            this.label7.Location = new System.Drawing.Point(635, 168);
+            this.label7.Name = "label7";
+            this.label7.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.label7.Size = new System.Drawing.Size(57, 13);
+            this.label7.TabIndex = 40;
+            this.label7.Text = "anchoMax";
+            this.label7.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.ForeColor = System.Drawing.SystemColors.Control;
+            this.label8.Location = new System.Drawing.Point(635, 229);
+            this.label8.Name = "label8";
+            this.label8.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.label8.Size = new System.Drawing.Size(41, 13);
+            this.label8.TabIndex = 41;
+            this.label8.Text = "altoMin";
+            this.label8.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.ForeColor = System.Drawing.SystemColors.Control;
+            this.label10.Location = new System.Drawing.Point(635, 255);
+            this.label10.Name = "label10";
+            this.label10.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.label10.Size = new System.Drawing.Size(44, 13);
+            this.label10.TabIndex = 43;
+            this.label10.Text = "altoMax";
+            this.label10.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
             // DetectorAutosDialog
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.ClientSize = new System.Drawing.Size(709, 460);
+            this.Controls.Add(this.label10);
+            this.Controls.Add(this.label8);
+            this.Controls.Add(this.label7);
+            this.Controls.Add(this.label6);
+            this.Controls.Add(this.label5);
+            this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
@@ -346,5 +430,11 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Label label10;
     }
 }
