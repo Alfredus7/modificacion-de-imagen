@@ -17,14 +17,12 @@ namespace modificacion_de_imagen.clases
         /// <param name="imagenProcesada">Imagen de salida con autos detectados (con contornos dibujados OwO)</param>
         /// <param name="cannyMin">Valor mínimo para el detector de bordes Canny</param>
         /// <param name="cannyMax">Valor máximo para el detector de bordes Canny</param>
-        /// <param name="anchoMin">Ancho mínimo permitido para un auto detectado</param>
         /// <param name="anchoMax">Ancho máximo permitido para un auto detectado</param>
-        /// <param name="altoMin">Alto mínimo permitido para un auto detectado</param>
         /// <param name="altoMax">Alto máximo permitido para un auto detectado</param>
         /// <returns>Imagen con los autos detectados dibujaditos en verde UwU</returns>
         public Bitmap DetectarAutos(Bitmap bitmapOriginal, out Bitmap imagenProcesada,
             int cannyMin, int cannyMax,
-            int anchoMin, int anchoMax, int altoMin, int altoMax)
+            int anchoMax, int altoMax)
         {
             // ╔══════════════════════════════════╗
             // ║       1. Preprocesamiento        ║
@@ -70,8 +68,8 @@ namespace modificacion_de_imagen.clases
                     Rectangle rect = CvInvoke.BoundingRectangle(contornos[i]);
 
                     // Verificamos que el ancho y alto estén dentro de los límites dados por el usuario
-                    if (rect.Width < anchoMin || rect.Width > anchoMax ||
-                        rect.Height < altoMin || rect.Height > altoMax)
+                    if (rect.Width > anchoMax ||
+                        rect.Height > altoMax)
                     {
                         continue; // No cumple con las medidas, lo ignoramos (；￣Д￣)
                     }
