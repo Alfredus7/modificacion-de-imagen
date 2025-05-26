@@ -122,7 +122,7 @@
             this.numericCannyMin.Size = new System.Drawing.Size(120, 20);
             this.numericCannyMin.TabIndex = 28;
             this.numericCannyMin.Value = new decimal(new int[] {
-            50,
+            40,
             0,
             0,
             0});
@@ -212,7 +212,7 @@
             this.numericMax_width.Size = new System.Drawing.Size(120, 20);
             this.numericMax_width.TabIndex = 30;
             this.numericMax_width.Value = new decimal(new int[] {
-            180,
+            190,
             0,
             0,
             0});
@@ -260,7 +260,7 @@
             this.numericMax_height.Size = new System.Drawing.Size(120, 20);
             this.numericMax_height.TabIndex = 32;
             this.numericMax_height.Value = new decimal(new int[] {
-            200,
+            77,
             0,
             0,
             0});
