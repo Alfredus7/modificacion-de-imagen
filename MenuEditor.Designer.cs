@@ -97,6 +97,7 @@
             this.ManhattanToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.chebyshevToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.autosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.mamografiaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.Ui.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.menuEdicionImagen.SuspendLayout();
@@ -528,7 +529,8 @@
             this.transformadasToolStripMenuItem,
             this.mapeoConteoToolStripMenuItem,
             this.medicionToolStripMenuItem,
-            this.autosToolStripMenuItem});
+            this.autosToolStripMenuItem,
+            this.mamografiaToolStripMenuItem});
             this.edicionToolStripMenuItem.Enabled = false;
             this.edicionToolStripMenuItem.ForeColor = System.Drawing.SystemColors.Control;
             this.edicionToolStripMenuItem.Name = "edicionToolStripMenuItem";
@@ -671,6 +673,13 @@
             this.autosToolStripMenuItem.Text = "autos";
             this.autosToolStripMenuItem.Click += new System.EventHandler(this.conteoautosToolStripMenuItem_Click);
             // 
+            // mamografiaToolStripMenuItem
+            // 
+            this.mamografiaToolStripMenuItem.Name = "mamografiaToolStripMenuItem";
+            this.mamografiaToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.mamografiaToolStripMenuItem.Text = "mamografia";
+            this.mamografiaToolStripMenuItem.Click += new System.EventHandler(this.mamografiaToolStripMenuItem_Click);
+            // 
             // MenuEditor
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
@@ -763,6 +772,7 @@
         private System.Windows.Forms.ToolStripMenuItem chebyshevToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem gammaCorrectionToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem autosToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem mamografiaToolStripMenuItem;
     }
 }
 
