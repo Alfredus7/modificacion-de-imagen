@@ -143,7 +143,7 @@ public class FiltrosPracticos2
                 }
             }
 
-            // Procesar cada canal por separado
+            // AplicarErosion cada canal por separado
             canalR = DifusionAnisotropica(canalR, iteraciones, lambda, k);
             canalG = DifusionAnisotropica(canalG, iteraciones, lambda, k);
             canalB = DifusionAnisotropica(canalB, iteraciones, lambda, k);

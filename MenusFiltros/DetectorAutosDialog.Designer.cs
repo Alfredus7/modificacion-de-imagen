@@ -92,7 +92,7 @@
             // 
             this.lblConteo.AutoSize = true;
             this.lblConteo.ForeColor = System.Drawing.SystemColors.Control;
-            this.lblConteo.Location = new System.Drawing.Point(596, 378);
+            this.lblConteo.Location = new System.Drawing.Point(586, 374);
             this.lblConteo.Name = "lblConteo";
             this.lblConteo.Size = new System.Drawing.Size(96, 13);
             this.lblConteo.TabIndex = 22;
@@ -188,7 +188,7 @@
             this.numericMax_width.Size = new System.Drawing.Size(120, 20);
             this.numericMax_width.TabIndex = 30;
             this.numericMax_width.Value = new decimal(new int[] {
-            190,
+            300,
             0,
             0,
             0});
@@ -212,7 +212,7 @@
             this.numericMax_height.Size = new System.Drawing.Size(120, 20);
             this.numericMax_height.TabIndex = 32;
             this.numericMax_height.Value = new decimal(new int[] {
-            77,
+            90,
             0,
             0,
             0});

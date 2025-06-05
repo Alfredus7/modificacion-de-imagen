@@ -1,6 +1,6 @@
 ﻿namespace modificacion_de_imagen.MenusFiltros
 {
-    partial class DetectorCalcificationDialog
+    partial class MorfologiaDialog
     {
         /// <summary>
         /// Required designer variable.
@@ -34,6 +34,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.pictureBoxPreview = new System.Windows.Forms.PictureBox();
             this.numericUpDownValor = new System.Windows.Forms.NumericUpDown();
+            this.comboBoxOperacion = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.TrackBackvalor)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxPreview)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownValor)).BeginInit();
@@ -123,12 +124,22 @@
             this.numericUpDownValor.ValueChanged += new System.EventHandler(this.numericUpDownValor_ValueChanged);
             this.numericUpDownValor.Leave += new System.EventHandler(this.numericUpDownValor_Leave);
             // 
-            // UmbralDialog
+            // comboBoxOperacion
+            // 
+            this.comboBoxOperacion.FormattingEnabled = true;
+            this.comboBoxOperacion.Location = new System.Drawing.Point(302, 168);
+            this.comboBoxOperacion.Name = "comboBoxOperacion";
+            this.comboBoxOperacion.Size = new System.Drawing.Size(156, 21);
+            this.comboBoxOperacion.TabIndex = 20;
+            this.comboBoxOperacion.SelectedIndexChanged += new System.EventHandler(this.comboBoxOperacion_SelectedIndexChanged);
+            // 
+            // MorfologiaDialog
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.ClientSize = new System.Drawing.Size(539, 315);
+            this.Controls.Add(this.comboBoxOperacion);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.buttonApply);
             this.Controls.Add(this.buttonCancel);
@@ -136,7 +147,7 @@
             this.Controls.Add(this.numericUpDownValor);
             this.Controls.Add(this.TrackBackvalor);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Name = "UmbralDialog";
+            this.Name = "MorfologiaDialog";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Form1";
             ((System.ComponentModel.ISupportInitialize)(this.TrackBackvalor)).EndInit();
@@ -154,5 +165,6 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.PictureBox pictureBoxPreview;
         private System.Windows.Forms.NumericUpDown numericUpDownValor;
+        private System.Windows.Forms.ComboBox comboBoxOperacion;
     }
 }

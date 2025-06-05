@@ -5,18 +5,19 @@ using modificacion_de_imagen.clases;
 
 namespace modificacion_de_imagen.MenusFiltros
 {
-    public partial class DetectorCalcificationDialog : Form
+    public partial class MorfologiaDialog : Form
     {
         public int UmbralValue { get; private set; }
         public Bitmap ImageToProcess { get; private set; }
 
         private Bitmap originalImage;
-        private MicrocalcificationDetector detector = new MicrocalcificationDetector();
+        private OperacionesMorfologia detector = new OperacionesMorfologia();
 
-        public DetectorCalcificationDialog(Bitmap image)
+        public MorfologiaDialog(Bitmap image)
         {
             InitializeComponent();
             originalImage = new Bitmap(image); // Guardamos la imagen original
+            comboBoxOperacion.DataSource = Enum.GetValues(typeof(TipoOperacionMorfologica));
             aplicarFiltro();
         }
 
@@ -58,16 +59,30 @@ namespace modificacion_de_imagen.MenusFiltros
         {
             if (originalImage != null)
             {
-                // Liberar memoria previa
                 ImageToProcess?.Dispose();
 
-                // Aplicar procesamiento con umbral fijo y erosión
                 int umbral = (int)numericUpDownValor.Value;
-                ImageToProcess = detector.Procesar(new Bitmap(originalImage), umbral);
 
-                // Mostrar imagen procesada
+                // Detectar tipo de operación desde el ComboBox
+                TipoOperacionMorfologica tipoOperacion = (TipoOperacionMorfologica)Enum.Parse(
+                    typeof(TipoOperacionMorfologica),
+                    comboBoxOperacion.SelectedItem.ToString()
+                );
+
+                ImageToProcess = detector.AplicarOperacionMorfologica(
+                    new Bitmap(originalImage),
+                    umbral,
+                    tipoOperacion,
+                    3
+                );
+
                 pictureBoxPreview.Image = ImageToProcess;
             }
+        }
+
+        private void comboBoxOperacion_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            aplicarFiltro();
         }
     }
 }

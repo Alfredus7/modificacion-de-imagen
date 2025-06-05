@@ -137,7 +137,7 @@
     <Compile Include="clases\filtros\FiltrodConFourier.cs" />
     <Compile Include="clases\filtros\RedimesionarImagen.cs" />
     <Compile Include="clases\ImagenManager.cs" />
-    <Compile Include="clases\MicrocalcificationDetector.cs" />
+    <Compile Include="clases\OperacionesMorfologia.cs" />
     <Compile Include="MenusFiltros\DetectorAutosDialog.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -210,11 +210,11 @@
     <Compile Include="MenusFiltros\SolarizadoDialog.Designer.cs">
       <DependentUpon>SolarizadoDialog.cs</DependentUpon>
     </Compile>
-    <Compile Include="MenusFiltros\DetectorCalcificationDialog.cs">
+    <Compile Include="MenusFiltros\MorfologiaDialog.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="MenusFiltros\DetectorCalcificationDialog.Designer.cs">
-      <DependentUpon>DetectorCalcificationDialog.cs</DependentUpon>
+    <Compile Include="MenusFiltros\MorfologiaDialog.Designer.cs">
+      <DependentUpon>MorfologiaDialog.cs</DependentUpon>
     </Compile>
     <Compile Include="MenusFiltros\UmbralDialog.cs">
       <SubType>Form</SubType>
@@ -269,8 +269,8 @@
     <EmbeddedResource Include="MenusFiltros\SolarizadoDialog.resx">
       <DependentUpon>SolarizadoDialog.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="MenusFiltros\DetectorCalcificationDialog.resx">
-      <DependentUpon>DetectorCalcificationDialog.cs</DependentUpon>
+    <EmbeddedResource Include="MenusFiltros\MorfologiaDialog.resx">
+      <DependentUpon>MorfologiaDialog.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MenusFiltros\UmbralDialog.resx">
       <DependentUpon>UmbralDialog.cs</DependentUpon>

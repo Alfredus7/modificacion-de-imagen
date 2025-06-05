@@ -22,7 +22,7 @@ namespace modificacion_de_imagen
         private readonly FiltrosPracticos2 filtrosPractico2 = new FiltrosPracticos2();
         private readonly filtrosArtisticos filtrosArtisticos = new filtrosArtisticos();
         private readonly filtrosDetecionBordes filtrosDetecionBordes = new filtrosDetecionBordes();
-        private readonly MicrocalcificationDetector Detecioncalcification = new MicrocalcificationDetector();
+        private readonly OperacionesMorfologia Detecioncalcification = new OperacionesMorfologia();
 
         public MenuEditor()
         {
@@ -179,6 +179,6 @@ namespace modificacion_de_imagen
         => AplicarFiltroConDialog(img => new DetectorAutosDialog(img));
 
         private void mamografiaToolStripMenuItem_Click(object sender, EventArgs e)
-          => AplicarFiltroConDialog(img => new DetectorCalcificationDialog(img));
+          => AplicarFiltroConDialog(img => new MorfologiaDialog(img));
     }
 }

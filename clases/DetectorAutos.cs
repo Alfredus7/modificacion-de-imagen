@@ -39,16 +39,15 @@ namespace modificacion_de_imagen.clases
                 if (rect.Width > anchoMax || rect.Height > altoMax) continue;
 
                 bool esBorde = rect.X <= 5 || rect.Y <= 5 || rect.Right >= imgOriginal.Width - 5 || rect.Bottom >= imgOriginal.Height - 5;
-                
+
                 double area = CvInvoke.ContourArea(contornos[i]);
-                if (!esBorde && (area < 2000 || area > 11000)) continue;
+                if (!esBorde && (area < 2000 || area > 30000)) continue;
 
                 double aspecto = (double)rect.Width / rect.Height;
                 if (aspecto < 0.1 || aspecto > 5.5) continue;
 
                 using (var subImagen = imgOriginal.GetSubRect(rect))
                 {
-                    CvInvoke.Mean(subImagen); // 💡 Se usa solo por efectos laterales, pero no guardamos el brillo.
                     CvInvoke.Rectangle(imgOriginal, rect, new MCvScalar(0, 255, 0), 2);
                     contador++;
                 }
