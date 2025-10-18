@@ -9,7 +9,7 @@ public class ImagenManager
 
     public Bitmap CargarImagen(out string nombreArchivo)
     {
-        OpenFileDialog ofd = new OpenFileDialog { Filter = @"Archivos de imagen|*.jpg;*.png;*.jpeg" };
+        OpenFileDialog ofd = new OpenFileDialog { Filter = @"Archivos de  imagen|*.jpg;*.png;*.jpeg" };
         if (ofd.ShowDialog() == DialogResult.OK)
         {
             NombreArchivoCargado = Path.GetFileNameWithoutExtension(ofd.FileName);
